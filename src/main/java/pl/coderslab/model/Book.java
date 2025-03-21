@@ -1,15 +1,11 @@
 package pl.coderslab.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import org.springframework.stereotype.Component;
 
-@Entity
+@Component
 public class Book {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private static Long nextId = 4L;
+    private Long id;
     private String isbn;
     private String title;
     private String author;
@@ -20,8 +16,9 @@ public class Book {
 
     }
 
-    public Book(long id, String isbn, String title, String author, String publisher, String type) {
+    public Book(Long id, String isbn, String title, String author, String publisher, String type) {
         this.id = id;
+        nextId++;
         this.isbn = isbn;
         this.title = title;
         this.author = author;
